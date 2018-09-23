@@ -4,9 +4,10 @@ const path = require('path');
 const webSocket = require("websocket").server;
 const util = require("util");
 const fs = require("fs");
+const getIpAdress = require('./getIpAdress.js');
 const readFile = util.promisify(fs.readFile);
 
-const host = "192.168.0.107";
+const host = getIpAdress();
 const port = 3000;
 
 let wsConnection;
