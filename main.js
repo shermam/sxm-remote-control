@@ -1,17 +1,18 @@
 const messages = document.querySelector('#messages');
 const send = document.querySelector("#send");
 
-const ws = new WebSocket("ws://192.168.0.107:3000", "teste");
-
-let isConnected = false;
+const ws = new WebSocket(location.href.replace('http', 'ws'), "teste");
 
 ws.addEventListener('message', message => {
-    isConnected = true;
     messages.innerHTML += message.data;
 });
 
+ws.addEventListener('close', () => {
+    messages.innerHTML = 'Connection closed';
+});
+
 addEventListener('devicemotion', e => {
-    if (!isConnected) return;
+    if (ws.readyState !== ws.OPEN) return;
     ws.send(JSON.stringify({
         x: e.rotationRate.alpha,
         y: -e.rotationRate.beta

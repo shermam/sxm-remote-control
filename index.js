@@ -24,6 +24,9 @@ const server = http.createServer((req, res) => {
         res.statusCode = 200;
         res.setHeader('Content-Type', `text/${fileName.split('.')[1]}`);
         res.end(file);
+    }).catch(e => {
+        console.log(e);
+        res.end();
     });
 });
 
