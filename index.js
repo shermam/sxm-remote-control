@@ -1,5 +1,6 @@
 const robot = require("robotjs");
 const http = require("http");
+const path = require('path');
 const webSocket = require("websocket").server;
 const util = require("util");
 const fs = require("fs");
@@ -12,15 +13,13 @@ let wsConnection;
 let mouseX = 0;
 let mouseY = 0;
 
-robot.moveMouse(mouseX, mouseY);
-
 robot.setMouseDelay(2);
 
 const server = http.createServer((req, res) => {
     const fileName = req.url.replace('/', '') || "index.html";
     res.setHeader('Cache-Control', 'no-store');
 
-    readFile(`${__dirname}/${fileName}`).then(file => {
+    readFile(path.join(__dirname, fileName)).then(file => {
         res.statusCode = 200;
         res.setHeader('Content-Type', `text/${fileName.split('.')[1]}`);
         res.end(file);
