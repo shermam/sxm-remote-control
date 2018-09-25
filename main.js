@@ -37,19 +37,21 @@ let lastY;
 
 function startCapturing() {
     // addEventListener('devicemotion', motionListener);
+
     touchpad.addEventListener('touchmove', touchListener);
     touchpad.addEventListener('touchend', () => lastX = lastY = null);
 }
 
 function stopCapturing() {
     // removeEventListener('devicemotion', motionListener);
+
     touchpad.removeEventListener('touchmove', touchListener);
 }
 
 function motionListener(e) {
     sendData({
-        x: e.rotationRate.alpha,
-        y: -e.rotationRate.beta
+        x: -e.rotationRate.gamma,
+        y: -e.rotationRate.alpha
     });
 }
 
