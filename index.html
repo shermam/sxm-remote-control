@@ -8,14 +8,22 @@
         <meta http-equiv="X-UA-Compatible"
               content="ie=edge">
         <title>Remote Control</title>
+        <link rel="manifest"
+              href="/manifest.webmanifest">
+        <link rel="stylesheet"
+              href="main.css">
     </head>
 
     <body>
-        <h1>Hi!</h1>
-
         <h2 id="messages"></h2>
 
-        <script src="main.js"></script>
+        <button id="connect">Connect</button>
+        <button id="disconnect">Disconnect</button>
+
+        <div id="touchpad"></div>
+
+        <script src="main.js"
+                type="module"></script>
     </body>
 
 </html>

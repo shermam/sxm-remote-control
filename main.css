@@ -1,0 +1,36 @@
+* {
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    touch-action: none;
+}
+
+body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 50px auto;
+    grid-template-areas: 
+        "connect disconnect"
+        "touchpad touchpad" 
+}
+
+#messages{
+    position: fixed;
+}
+
+#touchpad{
+    background: yellowgreen;
+    grid-area: touchpad;
+}
+
+#connect{
+    grid-area: connect;
+}
+
+#disconnect{
+    grid-area: disconnect;
+}
